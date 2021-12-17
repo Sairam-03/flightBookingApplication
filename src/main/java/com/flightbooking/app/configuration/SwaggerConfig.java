@@ -45,9 +45,9 @@ public class SwaggerConfig {
 
     private ApiInfo getApiInfo() {
         ApiInfo apiInfo = new ApiInfo("Flight Booking Application",
-                "Demonstration of Journey to Mars Flights","1.0",null,
+                "Demonstration of Journey to Mars Flights", "1.0", null,
                 new Contact("Sai ram", "https://saifolio.herokuapp.com/", "sai@gmail.com"),
-                null,null);
+                null, null);
         return apiInfo;
     }
 }

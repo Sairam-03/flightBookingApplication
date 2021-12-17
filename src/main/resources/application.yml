@@ -1,0 +1,22 @@
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: '''*'''
+server:
+  port: 8081
+spring:
+  datasource:
+    initialize: false
+    password: sa
+    url: jdbc:h2:mem:testDB;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+    username: sa
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update

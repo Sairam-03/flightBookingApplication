@@ -1,15 +1,11 @@
 package com.flightbooking.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
-import lombok.Data;
-
-@Data
-@Builder
 public class FlightListInfo {
 
     private String fromPlace;

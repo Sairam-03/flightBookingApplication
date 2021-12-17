@@ -1,7 +1,6 @@
 package com.flightbooking.app.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,17 +9,17 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
-@Data
 @Table(name = "airline_info")
 public class AirlineInfo {
 
     @Id
     private String airline;
 
-    @OneToMany(mappedBy="airlineInfos")
+    @OneToMany(mappedBy = "airlineInfos")
     @JsonIgnore
     private List<Flights> flights;
     private String blockStatus;
+
     @Override
     public String toString() {
         return "AirlineInfo [airline=" + airline + ", blockStatus=" + blockStatus + "]";

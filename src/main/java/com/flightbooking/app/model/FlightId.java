@@ -1,19 +1,10 @@
 package com.flightbooking.app.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Date;
 
 @Embeddable
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class FlightId implements Serializable {
 
     private Long flightno;

@@ -2,70 +2,65 @@ package com.flightbooking.app.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.flightbooking.app.model.enumPacker.Gender;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 
 import javax.persistence.*;
 
 
-@Data
-@Builder
 @Entity
-@AllArgsConstructor
 public class Passenger {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer pid;
-		
-	private String pname;
-	private Gender gender;
-	private int age;
-	
-	@ManyToOne
-	@JsonIgnore
-	private UserBooking userbooking;
-	
-	Passenger(){}
 
-	public Integer getPid() {
-		return pid;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer pid;
 
-	public void setPid(Integer pid) {
-		this.pid = pid;
-	}
+    private String pname;
+    private Gender gender;
+    private int age;
 
-	public String getPname() {
-		return pname;
-	}
+    @ManyToOne
+    @JsonIgnore
+    private UserBooking userbooking;
 
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
+    Passenger() {
+    }
 
-	public Gender getGender() {
-		return gender;
-	}
+    public Integer getPid() {
+        return pid;
+    }
 
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public String getPname() {
+        return pname;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
 
-	public UserBooking getUserbooking() {
-		return userbooking;
-	}
+    public Gender getGender() {
+        return gender;
+    }
 
-	public void setUserbooking(UserBooking userbooking) {
-		this.userbooking = userbooking;
-	}
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public UserBooking getUserbooking() {
+        return userbooking;
+    }
+
+    public void setUserbooking(UserBooking userbooking) {
+        this.userbooking = userbooking;
+    }
 }

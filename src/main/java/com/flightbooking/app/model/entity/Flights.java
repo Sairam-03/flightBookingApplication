@@ -2,16 +2,10 @@ package com.flightbooking.app.model.entity;
 
 import com.flightbooking.app.model.FlightId;
 import com.flightbooking.app.model.enumPacker.Meal;
-import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
 public class Flights {
 
     @EmbeddedId
@@ -26,11 +20,12 @@ public class Flights {
     private Meal mealChoice;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="airline")
+    @JoinColumn(name = "airline")
     private AirlineInfo airlineInfos;
 
 
-    Flights(){}
+    Flights() {
+    }
 
     public FlightId getFlightid() {
         return flightid;
