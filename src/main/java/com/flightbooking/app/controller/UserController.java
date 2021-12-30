@@ -15,6 +15,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+
+
+//Class containing user role operations
+@CrossOrigin(origins = { "http://localhost:3000" })
 @RestController
 @Slf4j
 @RequestMapping("/api/v1.0/flight")
@@ -26,6 +30,7 @@ public class UserController {
         this.userFlightService = userFlightService;
     }
 
+    //Searching of flights
     @PostMapping("/search")
     public ResponseEntity<List<Flights>> searchFlights(@RequestBody FlightListInfo flightReq) {
         //User should be able to search for flight based on date/time, from place/to place, one way or round trip
@@ -38,6 +43,7 @@ public class UserController {
         return null;
     }
 
+    //Booking flights api by proving flight id and other details
     @PostMapping("/booking/{flightId}")
     public ResponseEntity<String> bookFlight(@PathVariable("flightId") Integer flightId, @RequestBody UserBooking userBooking) {
         userBooking.setFlightId(flightId);
@@ -47,6 +53,7 @@ public class UserController {
         return ResponseEntity.badRequest().body("Unable to get PNR for the provided flight details");
     }
 
+    //method to fetch tickets based on pnr number
     @GetMapping("/ticket/{pnr}")
     public ResponseEntity<UserBooking> fetchTicket(@PathVariable("pnr") String pnr) {
         if (userFlightService.findByPnr(pnr) != null)
@@ -54,6 +61,7 @@ public class UserController {
         return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
     }
 
+    //method to fetch tickets based on email id
     @GetMapping("/tickets/{emailid}")
     public ResponseEntity<List<UserBooking>> getTicketsbyEmailId(@PathVariable("emailid") String emailId) {
         if (userFlightService.findByEmailId(emailId) != null)
@@ -61,13 +69,14 @@ public class UserController {
         return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
     }
 
+    //Method to cancel the booked tickets
     @DeleteMapping("/cancel/{pnr}")
     public ResponseEntity<String> ticketCancellation(@PathVariable("pnr") String pnr) {
         String deletedRecord = userFlightService.deleteByPnr(pnr);
         return new ResponseEntity<>(deletedRecord, HttpStatus.OK);
     }
 
-
+    //method to calculate the time is 24 hours or lessthan that for cancelling the tickets
     private void timeConverter(FlightListInfo flightReq) {
         if (flightReq.getOnboardDate() != null) {
             StringBuilder sb = new StringBuilder();
